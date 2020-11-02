@@ -1,0 +1,6 @@
+torch
+torchvision
+hdbscan
+natsort
+seaborn
+faiss-cpu
