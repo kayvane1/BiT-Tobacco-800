@@ -4,6 +4,7 @@ import torch.nn.functional as F
 from pre_act_bottleneck import *
 from functools import partial
 from collections import OrderedDict
+import requests
 
 
 class ResNetV2(nn.Module):
@@ -95,6 +96,16 @@ class ResNetV2(nn.Module):
           unit.load_from(weights, prefix=f'{prefix}{bname}/{uname}/')
     return self
 
+def get_headless_model(model):
+  # These lines chops off the final layer to expose the 2048 embedding for any image
+  last = nn.Sequential(*list(model.children())[-1][:-1])
+  tf_last_layer_chopped = nn.Sequential(*list(model.children())[:-1], last)
+  return tf_last_layer_chopped
+
+def get_model_weights(bit_variant):
+  response = requests.get(f'https://storage.googleapis.com/bit_models/{bit_variant}.npz')
+  response.raise_for_status()
+  return np.load(io.BytesIO(response.content))
 
 def gradCAM(model, img):
 
