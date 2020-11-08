@@ -1,10 +1,11 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from pre_act_bottleneck import *
+from src.pre_act_bottleneck import *
 from functools import partial
 from collections import OrderedDict
 import requests
+import io
 
 
 class ResNetV2(nn.Module):
