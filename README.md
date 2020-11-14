@@ -1,8 +1,7 @@
 # BiT-Tobacco-800
 
-<br>
+
 [<img src="https://deepnote.com/buttons/launch-in-deepnote.svg">](https://deepnote.com/project/9045f0e2-4d02-4e64-b313-d70bdf35dcc5#%2FBiT-Tobacco-800%2Fbig_transfer_model.ipynb)
-<br>
 
 ## Overview
 
